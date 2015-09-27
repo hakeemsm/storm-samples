@@ -18,6 +18,8 @@ public class NormalizerBolt extends BaseBasicBolt {
       "by", "from", "they", "we", "her", "or", "will", "my", "one", "all", "s", "if",
       "any", "our", "may", "your", "these", "d" , " ", "me" , "so" , "what" , "him" );
 
+
+
   @Override
   public void execute(Tuple tuple, BasicOutputCollector collector) {
 
@@ -28,7 +30,11 @@ public class NormalizerBolt extends BaseBasicBolt {
      2. remove the common words
 
     ------------------------------------------------- */
-
+      String sentence = tuple.getString(0);
+      String outWord = sentence.toLowerCase();
+      if (!commonWords.contains(outWord)) {
+          collector.emit(new Values(outWord));
+      }
 
   }
 

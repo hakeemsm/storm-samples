@@ -5,6 +5,8 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import backtype.storm.tuple.Values;
 
+import java.util.Collection;
+import java.util.Collections;
 import java.util.HashMap;
 
 /**
@@ -29,7 +31,13 @@ public class TopNFinderBolt extends BaseBasicBolt {
 
 
     ------------------------------------------------- */
-
+      String word = tuple.getString(0);
+      Integer count = tuple.getInteger(1);
+      currentTopWords.put(word, count);
+      if (currentTopWords.size() > N){
+          Collection<Integer> values = currentTopWords.values();
+          values.remove(Collections.min(values));
+      }
 
     //reports the top N words periodically
     if (System.currentTimeMillis() - lastReportTime >= intervalToReport) {

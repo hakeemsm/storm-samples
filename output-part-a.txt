@@ -1,0 +1,3 @@
+2015-09-27 16:47:36,739 ERROR Policies has no parameter that matches element DefaultRolloverStrategy
+2015-09-27 16:47:36,749 ERROR Policies has no parameter that matches element DefaultRolloverStrategy
+2015-09-27 16:47:36,753 ERROR Policies has no parameter that matches element DefaultRolloverStrategy
